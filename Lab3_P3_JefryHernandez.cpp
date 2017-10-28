@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <sstream>
 
 using namespace std;
 
@@ -54,15 +55,19 @@ int main(){
 							int a=0,b=0,temp=0;
 							for(int i =0;i<fechas.size();i++){
 								a= atoi(fechas[i].c_str());
-								for(int j=0;j<fechas.size();j++){
-									b= atoi(fechas[i].c_str());
+								for(int j=i;j<fechas.size();j++){
+									b= atoi(fechas[j].c_str());
 									if(b<a){
-										string menor="",mayor="";
-										menor+=b;
-										mayor+=a;
-										temp =a;
-										fechas[i]=menor;
-										fechas[j]=mayor;
+										string menor="",mayor="",nuevomenor="",nuevomayor="";
+										stringstream sstm;
+										stringstream sstm1;
+										sstm<<menor<<b;
+										sstm1<<mayor<<a;
+										nuevomayor=sstm1.str();
+										nuevomenor=sstm.str();																		
+										temp =a;								
+										fechas[i]=nuevomenor;
+										fechas[j]=nuevomayor;
 									}
 								}
 							}for(int i =0;i<fechas.size();i++){
