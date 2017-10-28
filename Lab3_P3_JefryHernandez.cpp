@@ -6,11 +6,12 @@ using namespace std;
 int menu();
 int*** ruffini();
 int*** crearMatriz(int);
-int*** llenar(int***,int);
+int*** llenar(int***,int,int*);
 int** mediana();
 bool fechavalida(string);
 void print(int***,int);
 int* exponentes(int);
+int*** calcular(int***,int,int);
 
 int main(){
 	int resp=4;
@@ -52,13 +53,23 @@ int menu(){
 }
 int*** ruffini(){
 	int*** matriz;
+	int* exp;
 	int size;
+	int a;
 	cout<<"Ingrese el mayor grado del exponente"<<endl;
 	cin >> size;
 	size++;
 	matriz = crearMatriz(size);
-	llenar(matriz,size);
-	exponentes(size);
+	exp=exponentes(size);
+	llenar(matriz,size,exp);
+	cout<<endl;
+	for(int i=0;i<size;i++){
+		cout<<exp[i]<<endl;
+	}
+	cout<<"Ingrese el valor de a"<<endl;
+	cin>>a;
+	matriz = calcular(matriz,size,a);
+	matriz = calcular(matriz,size,a);
 	print(matriz,size);
 	
 
@@ -78,12 +89,21 @@ int*** crearMatriz(int size){
 bool fechavalida(string fecha){
 
 
-}int*** llenar(int*** matriz,int size){
+}int*** llenar(int*** matriz,int size,int* coeficientes){
 	for(int i=0;i<size;i++){
 		for(int j =0;j<3;j++){
-			for(int k=0;k<size;k++){
-				matriz[i][j][k]=0;
-			}	
+			if(j!=0){
+				for(int k=0;k<size;k++){
+					matriz[i][j][k]=0;
+				}					
+			}if(j==2){
+				matriz[i][j][0]=coeficientes[0];
+			}
+			if(j==0) {
+				for(int k=0;k<size;k++){
+					matriz[i][j][k]=coeficientes[k];
+				}
+			}
 		}
 	}
 	return matriz;
@@ -99,11 +119,41 @@ void print(int*** matriz,int size){
 }
 int* exponentes(int size){
 	int* exp =new int[size];
-	for(int i=size-1;i<=0;i--){
+	for(int i=size-1;i>=0;i--){
 		int coeficiente;
 		cout<<"Ingrese el coeficiente para x^"<<i<<endl;
 		cin>>coeficiente;
 		exp[size-(i+1)]= coeficiente;
 	}
 	return exp;
+}
+int*** calcular(int*** matriz,int size,int a){
+	for(int i=0;i<size;i++){
+                for(int j=0;j<3;j++){
+                        if(j==1){
+                                for(int k =1;k<=i;k++){
+                                        int first = matriz[i][2][k-1];
+                                        int second = first*a;
+                                        matriz[i][j][k]= second;                                        
+                                }
+                        }if(j==2){
+                                for(int k =0;k<=i;k++){
+                                        if(k ==0){
+                                                matriz[i][j][k] =matriz[i][0][k];
+
+                                        }
+                                        else{
+                                                int first = matriz[i][j][k-1];
+                                                int second = first*a;
+                                                first= matriz[i][0][k];                                                
+                                                matriz[i][j][k]= first+second;
+                                        }
+                                }
+
+
+
+                        }
+                }
+        }
+	return matriz;
 }
