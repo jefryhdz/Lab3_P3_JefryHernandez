@@ -29,15 +29,50 @@ int main(){
 				char res;
 				res='s';
 				do{
-					string ffecha;
-					cout<<"Ingrese una fecha"<<endl;
-					cin>>ffecha;
-					bool date = fechavalida(ffecha);
-					if(date){
-						calculardia(ffecha);
-						fechas.push_back(ffecha);
+					int menufecha;
+					cout<< "1- Agregar una fecha "<<endl;
+					cout<<"2- Listar todo"<<endl;
+					cout<<"3- Listar ordenado"<<endl;
+					cin>>menufecha;
+					switch(menufecha){
+						case 1:{
+							string ffecha;
+							cout<<"Ingrese una fecha"<<endl;
+							cin>>ffecha;
+							bool date = fechavalida(ffecha);
+							if(date){
+								calculardia(ffecha);
+								fechas.push_back(ffecha);
+							}
+						}break;
+						case 2:{
+							for(int i =0;i<fechas.size();i++){
+								calculardia(fechas[i]);
+							}
+						}break;						
+						case 3:{
+							int a=0,b=0,temp=0;
+							for(int i =0;i<fechas.size();i++){
+								a= atoi(fechas[i].c_str());
+								for(int j=0;j<fechas.size();j++){
+									b= atoi(fechas[i].c_str());
+									if(b<a){
+										string menor="",mayor="";
+										menor+=b;
+										mayor+=a;
+										temp =a;
+										fechas[i]=menor;
+										fechas[j]=mayor;
+									}
+								}
+							}for(int i =0;i<fechas.size();i++){
+								calculardia(fechas[i]);
+							}
+						}
+						break;
 					}
-					cout<<"Desea ingresar una fecha [s/n]"<<endl;
+					cout<<fechas.size()<<endl;
+					cout<<"Desea continuar en el programa de fechas[s/n]"<<endl;
 					cin>>res;					
 				}while(res=='s');
 				break;
@@ -68,14 +103,12 @@ void ruffini(){
 	exp=exponentes(size);
 	llenar(matriz,size,exp);
 	cout<<endl;
-	for(int i=0;i<size;i++){
-		cout<<exp[i]<<endl;
-	}
 	cout<<"Ingrese el valor de a"<<endl;
 	cin>>a;
 	matriz = calcular(matriz,size,a);
 	matriz = calcular(matriz,size,a);
 	print(matriz,size);
+	
 	
 
 }
@@ -292,4 +325,5 @@ void calculardia(string fecha){
 
 	cout<<weekday<<", "<<day<<" de "<<mon<<" del "<<year<<endl;
 }
+
 	
