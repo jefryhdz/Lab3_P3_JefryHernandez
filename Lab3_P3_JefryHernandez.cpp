@@ -10,6 +10,7 @@ int*** llenar(int***,int);
 int** mediana();
 bool fechavalida(string);
 void print(int***,int);
+int* exponentes(int);
 
 int main(){
 	int resp=4;
@@ -57,7 +58,9 @@ int*** ruffini(){
 	size++;
 	matriz = crearMatriz(size);
 	llenar(matriz,size);
+	exponentes(size);
 	print(matriz,size);
+	
 
 }
 int*** crearMatriz(int size){
@@ -93,4 +96,14 @@ void print(int*** matriz,int size){
                         }cout<<endl;
                 }cout<<endl;
 	 }	
+}
+int* exponentes(int size){
+	int* exp =new int[size];
+	for(int i=size-1;i<=0;i--){
+		int coeficiente;
+		cout<<"Ingrese el coeficiente para x^"<<i<<endl;
+		cin>>coeficiente;
+		exp[size-(i+1)]= coeficiente;
+	}
+	return exp;
 }
