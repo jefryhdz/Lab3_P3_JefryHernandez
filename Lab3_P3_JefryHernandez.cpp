@@ -91,6 +91,6 @@ void print(int*** matriz,int size){
                         for(int k=0;k<size;k++){
                               cout<<  matriz[i][j][k]<<"|";
                         }cout<<endl;
-                }
+                }cout<<endl;
 	 }	
 }
