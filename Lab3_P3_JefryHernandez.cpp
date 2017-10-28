@@ -30,7 +30,7 @@ int main(){
 				res='s';
 				do{
 					string ffecha;
-					cout<<"Ingrese la fecha en string "<<endl;
+					cout<<"Ingrese una fecha"<<endl;
 					cin>>ffecha;
 					bool date = fechavalida(ffecha);
 					if(date){
@@ -208,7 +208,6 @@ void calculardia(string fecha){
 	string ano = fecha.substr(0,4);
 	string mes = fecha.substr(4,2);
 	string dia = fecha.substr(6,8);
-	cout<<"w"<<endl;
 	int year= atoi(ano.c_str());
 	int month = atoi(mes.c_str());
 	int day= atoi(dia.c_str());
@@ -228,7 +227,6 @@ void calculardia(string fecha){
 	}
 	string digitos=ano.substr(2,4);//digitos porque ocupo los dos ultimos digitos del año
 	int digits = atoi(digitos.c_str());	
-	cout<<digits<<endl;
 	b=digits+(digits/4);
 	if(year%4==0&&year%100!=0){
 		c=-1;	
@@ -264,7 +262,34 @@ void calculardia(string fecha){
 	}if(total==0){
 		weekday="Domingo";
 	}
+	string mon;
+	if(month==1){
+		mon="Enero";
+	}if(month==2){
+		mon = "Febrero";
+	}if(month==3){
+		mon ="Marzo";
+	}if(month==4){
+		mon="Abril";
+	}if(month==5){
+		mon="Mayo";
+	}if(month==6){
+		mon="Junio";
+	}if(month==7){
+		mon="Julio";
+	}if(month== 8){
+		mon="Agosto";
+	}if(month==9){
+		mon = "Septiembre";
+	}if(month==10){
+		mon="Octubre";
+	}if(month==11){
+		mon="Noviembre";
+	}if(month==12){
+		mon=="Diciembre";
+	}
+			
 
-	cout<<weekday<<endl;
+	cout<<weekday<<", "<<day<<" de "<<mon<<" del "<<year<<endl;
 }
 	
