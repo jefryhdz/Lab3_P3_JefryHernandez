@@ -248,7 +248,7 @@ void calculardia(string fecha){
 	e=day;
 	int total=a+b+c+d+e;
 	total-=7;
-	cout<<total<<endl;
+	total%=7;
 	if(total ==1){
 		weekday="Lunes";
 	}if(total==2){
@@ -264,6 +264,7 @@ void calculardia(string fecha){
 	}if(total==0){
 		weekday="Domingo";
 	}
+
 	cout<<weekday<<endl;
 }
 	
