@@ -90,7 +90,7 @@ void print(int*** matriz,int size){
                 for(int j =0;j<3;j++){
                         for(int k=0;k<size;k++){
                               cout<<  matriz[i][j][k]<<"|";
-                        }
-                }<<endl;
+                        }cout<<endl;
+                }
 	 }	
 }
