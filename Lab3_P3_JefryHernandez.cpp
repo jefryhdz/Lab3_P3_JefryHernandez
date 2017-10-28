@@ -1,15 +1,15 @@
 #include <iostream>
 #include <vector>
-#include <date.h>
 
 using namespace std;
 
 int menu();
 int*** ruffini();
 int*** crearMatriz(int);
-int*** llenar(int);
+int*** llenar(int***,int);
 int** mediana();
 bool fechavalida(string);
+void print(int***,int);
 
 int main(){
 	int resp=4;
@@ -22,18 +22,17 @@ int main(){
 				break;
 			case 3: 
 				vector<string> fechas;
-				char res='s';
+				char res;
+				res='s';
 				do{
 					string ffecha;
 					cout<<"Ingrese la fecha en string "<<endl;
 					cin>>ffecha;
 					fechas.push_back(ffecha);
-					fecha(ffecha);
+					//fecha(ffecha);
 					cout<<"Desea ingresar una fecha [s/n]"<<endl;
 					cin>>resp;					
-				}while(resp=='s');
-				break;
-			case 4:
+				}while(res=='s');
 				break;
 		}	
 
@@ -90,8 +89,8 @@ void print(int*** matriz,int size){
 	 for(int i=0;i<size;i++){
                 for(int j =0;j<3;j++){
                         for(int k=0;k<size;k++){
-                              cout<<  matriz[i][j][k]<<"|"<<endl;
+                              cout<<  matriz[i][j][k]<<"|";
                         }
-                }
+                }<<endl;
 	 }	
 }
