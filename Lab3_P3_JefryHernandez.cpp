@@ -76,7 +76,6 @@ int main(){
 						}
 						break;
 					}
-					cout<<fechas.size()<<endl;
 					cout<<"Desea continuar en el programa de fechas[s/n]"<<endl;
 					cin>>res;					
 				}while(res=='s');
@@ -136,7 +135,6 @@ bool fechavalida(string fecha){
 	int year= atoi(ano.c_str());
 	int month = atoi(mes.c_str());
 	int day= atoi(dia.c_str());
-	cout<<year<<" "<<month<<" "<<day<<"sd"<<endl;
 	if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
 		if(day>0&&day<32){
 			return true;
